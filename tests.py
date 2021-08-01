@@ -28,6 +28,27 @@ class TestCase(unittest.TestCase):
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
+    # Tests conversion to float 0
+    def test_conv_num_float_0(self):
+        test_case = '0'
+        expected = 0
+        self.assertEqual(task.conv_num(test_case), expected,
+                         msg='conv_num({}) Failed'.format(expected))
+
+    # Tests conversion to float 1589.03950
+    def test_conv_num_float_pos(self):
+        test_case = '1589.03950'
+        expected = 1589.03950
+        self.assertEqual(task.conv_num(test_case), expected,
+                         msg='conv_num({}) Failed'.format(expected))
+
+    # Tests conversion to float -1589.03950
+    def test_conv_num_float_neg(self):
+        test_case = '-1589.03959'
+        expected = -1589.03959
+        self.assertEqual(task.conv_num(test_case), expected,
+                         msg='conv_num({}) Failed'.format(expected))
+
 
 if __name__ == '__main__':
     unittest.main()
