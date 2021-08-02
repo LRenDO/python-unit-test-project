@@ -13,6 +13,7 @@ def conv_num(num_string):
         decimal or hex (must be in 0x or -0x prefix format)
     Returns: integer or float
     """
+    # Check for empty string or non string type
     if num_string == '' or type(num_string) is not str:
         return None
 
@@ -37,16 +38,24 @@ def is_valid(num_string):
     Parameter: num_string (string) number to be checked
     Returns: True if valid. Otherwise False.
     """
+    # Check for symbols and prefixes with no numbers
+    no_number = ['.', '-', '0X', '-0X']
+    if num_string in no_number:
+        return False
 
+    # Check for more than one decimal point
     decimal_index = num_string.find('.')
-    if decimal_index != -1 and decimal_index != len(num_string) - 1:
+    if decimal_index != -1 and decimal_index + 1 != len(num_string):
         if num_string[decimal_index + 1:].find('.') != -1:
             return False
 
+    # Check for valid hex digits and prefixes
     if num_string.isupper():
+        # Check valid hex character
         for char in num_string:
             if not valid_hex_chr(char):
                 return False
+        # Check valid prefix
         if num_string[:2] != "0X" and num_string[:3] != "-0X":
             return False
 
@@ -60,13 +69,16 @@ def valid_hex_chr(char):
     Parameter: char (character) to be compared
     Returns: True if valid hex char. Otherwise False.
     """
+    # Check if hex prefix character
     if char == '-' or char == 'X':
         return True
 
+    # Check if digit
     if ord(char) >= ord('0'):
         if ord(char) <= ord('9'):
             return True
 
+    # Check if hex letter
     if ord(char) >= ord('A'):
         if ord(char) <= ord('F'):
             return True
@@ -82,7 +94,7 @@ def conv_int(num_string):
     Returns: integer
     """
     if num_string[0] == '-':
-        return -conv_int(num_string[1:len(num_string)])
+        return -conv_int(num_string[1:])
 
     num = 0
     exp = 0
@@ -101,11 +113,11 @@ def conv_float(num_string):
         decimal point
     Returns: float
     """
-    if num_string[len(num_string) - 1] == '.':
+    if num_string[-1] == '.':
         num_string = num_string + '0'
 
     if num_string[0] == '-':
-        return -conv_float(num_string[1:len(num_string)])
+        return -conv_float(num_string[1:])
 
     else:
         decimal_index = num_string.find('.')

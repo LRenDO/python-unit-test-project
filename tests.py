@@ -166,10 +166,31 @@ class TestCase(unittest.TestCase):
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
-    # Temporary Tests
-    def test_conv_num_temp(self):
-        test_case = '.45'
-        expected = 0.45
+    # Tests - symbol only
+    def test_conv_num_neg_sign(self):
+        test_case = '-'
+        expected = None
+        self.assertEqual(task.conv_num(test_case), expected,
+                         msg='conv_num({}) Failed'.format(expected))
+
+    # Tests . symbol only
+    def test_conv_num_point_only(self):
+        test_case = '.'
+        expected = None
+        self.assertEqual(task.conv_num(test_case), expected,
+                         msg='conv_num({}) Failed'.format(expected))
+
+    # Tests 0x hex prefix only
+    def test_conv_num_prefix(self):
+        test_case = '0x'
+        expected = None
+        self.assertEqual(task.conv_num(test_case), expected,
+                         msg='conv_num({}) Failed'.format(expected))
+
+    # Tests -0x hex prefix only
+    def test_conv_num_prefix(self):
+        test_case = '-0x'
+        expected = None
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
