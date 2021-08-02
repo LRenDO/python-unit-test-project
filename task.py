@@ -144,4 +144,3 @@ def conv_hex(num_string):
         num = num + digit * pow(16, exp)
         exp += 1
     return num
-
