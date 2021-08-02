@@ -188,7 +188,7 @@ class TestCase(unittest.TestCase):
                          msg='conv_num({}) Failed'.format(expected))
 
     # Tests -0x hex prefix only
-    def test_conv_num_prefix(self):
+    def test_conv_num_neg_prefix(self):
         test_case = '-0x'
         expected = None
         self.assertEqual(task.conv_num(test_case), expected,
