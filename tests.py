@@ -97,5 +97,6 @@ class TestCase(unittest.TestCase):
         self.assertEqual(conv_endian(num, endian), '-06',
                          msg='Does not pass (num={})'.format(num))
 
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
