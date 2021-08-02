@@ -127,10 +127,9 @@ def conv_hex(num_string):
     """
     if num_string[0] == '-':
         if num_string == '-0X0':
-            return
+            return 0
         else:
-            num_string = calc_complement(num_string[3:])
-            return - conv_hex(num_string)
+            return -conv_hex(num_string[3:])
 
     if num_string[:2] == '0X':
         num_string = num_string[2:]
@@ -146,30 +145,3 @@ def conv_hex(num_string):
         exp += 1
     return num
 
-
-def calc_complement(num_string):
-    """
-    Returns two's complement of hex number converted
-
-    Parameter: num_string (string) hex to get two's complement of. All letters
-        must be capitalized.
-    Returns: string that is the inverse of the original hex
-    """
-    complement = ''
-    is_last_digit = True
-    for char in reversed(num_string):
-        if char.isupper():
-            comp_digit = 15 - (ord(char) - ord('A') + 10)
-        else:
-            comp_digit = 15 - (ord(char) - ord('0'))
-
-        if is_last_digit:
-            comp_digit += 1
-            is_last_digit = False
-
-        if comp_digit >= 10:
-            comp_digit = chr(comp_digit + ord('A') - 10)
-
-        complement = str(comp_digit) + complement
-
-    return complement

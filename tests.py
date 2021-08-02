@@ -103,7 +103,7 @@ class TestCase(unittest.TestCase):
     # Tests hex conversion to base 10 0x0
     def test_conv_num_hex_neg0(self):
         test_case = '-0x0'
-        expected = None
+        expected = 0
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
@@ -116,7 +116,7 @@ class TestCase(unittest.TestCase):
 
     # Tests hex conversion to base 10 -0xf52C
     def test_conv_num_hex_neg(self):
-        test_case = '-0xf52C'
+        test_case = '-0xaD4'
         expected = -2772
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
