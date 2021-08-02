@@ -160,7 +160,7 @@ class TestCase(unittest.TestCase):
                          msg='conv_num({}) Failed'.format(expected))
 
     # Tests non-string types
-    def test_conv_num_no_prefix(self):
+    def test_conv_num_type(self):
         test_case = 2459
         expected = None
         self.assertEqual(task.conv_num(test_case), expected,
