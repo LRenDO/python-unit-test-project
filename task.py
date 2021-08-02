@@ -13,14 +13,65 @@ def conv_num(num_string):
         decimal or hex (must be in 0x or -0x prefix format)
     Returns: integer or float
     """
-    if num_string[:2] == '0x' or num_string[:3] == '-0x':
-        num_string = num_string.upper()
-        return conv_hex(num_string)
+    if num_string == '' or type(num_string) is not str:
+        return None
 
-    elif num_string.find('.') != -1:
-        return conv_float(num_string)
+    num_string = num_string.upper()
 
-    return conv_int(num_string)
+    if is_valid(num_string):
+        if num_string[:2] == '0X' or num_string[:3] == '-0X':
+            return conv_hex(num_string)
+
+        elif num_string.find('.') != -1:
+            return conv_float(num_string)
+
+        return conv_int(num_string)
+    else:
+        return
+
+
+def is_valid(num_string):
+    """
+    Checks string to make sure it is valid
+
+    Parameter: num_string (string) number to be checked
+    Returns: True if valid. Otherwise False.
+    """
+
+    decimal_index = num_string.find('.')
+    if decimal_index != -1 and decimal_index != len(num_string) - 1:
+        if num_string[decimal_index + 1:].find('.') != -1:
+            return False
+
+    if num_string.isupper():
+        for char in num_string:
+            if not valid_hex_chr(char):
+                return False
+        if num_string[:2] != "0X" and num_string[:3] != "-0X":
+            return False
+
+    return True
+
+
+def valid_hex_chr(char):
+    """
+    Converts strings of numbers without decimal point into integers
+
+    Parameter: char (character) to be compared
+    Returns: True if valid hex char. Otherwise False.
+    """
+    if char == '-' or char == 'X':
+        return True
+
+    if ord(char) >= ord('0'):
+        if ord(char) <= ord('9'):
+            return True
+
+    if ord(char) >= ord('A'):
+        if ord(char) <= ord('F'):
+            return True
+
+    return False
 
 
 def conv_int(num_string):
@@ -58,8 +109,11 @@ def conv_float(num_string):
 
     else:
         decimal_index = num_string.find('.')
-        left_side = conv_int(num_string[0:decimal_index])
-        right_str = num_string[decimal_index + 1:len(num_string)]
+        if decimal_index == 0:
+            left_side = 0
+        else:
+            left_side = conv_int(num_string[:decimal_index])
+        right_str = num_string[decimal_index + 1:]
         right_side = conv_int(right_str) * pow(10, -len(right_str))
         return left_side + right_side
 
