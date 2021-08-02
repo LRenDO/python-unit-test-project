@@ -3,6 +3,35 @@
 # Due Date: 2021-08-09
 
 
+def reverse_endianness(hex_str):
+    """This function reverses a little endian hexadecimal byte string to big
+    endian or vice versa
+
+    :param hex_str: a string of hexadecimal bytes separated by spaces
+    :return: a string of hexadecimal bytes separated by spaces of the opposite
+        endianness
+    """
+    i = 0
+    j = 1
+    m = len(hex_str) - 2
+    n = len(hex_str) - 1
+    new_str = list(hex_str)
+
+    while(i <= m):
+        new_str[i] = hex_str[m]
+        new_str[j] = hex_str[n]
+        new_str[m] = hex_str[i]
+        new_str[n] = hex_str[j]
+        i += 3
+        j += 3
+        m -= 3
+        n -= 3
+
+    new_str = ''.join(new_str)
+
+    return new_str
+
+
 def conv_endian(num, endian='big'):
     """This function converts a decimal integer to a string of hexadecimal
     bytes
@@ -42,6 +71,9 @@ def conv_endian(num, endian='big'):
 
     if digit_num == 1:                          # fill out the final byte with
         hex_str = '0' + hex_str                 # an initial zero if necessary
+
+    if endian == 'little':
+        hex_str = reverse_endianness(hex_str)
 
     if num < 0:
         hex_str = '-' + hex_str
