@@ -50,6 +50,7 @@ def is_valid(num_string):
         return False
 
     # Check for more than one decimal point
+    # Finds index of first decimal and checks remainder of string for a second
     decimal_index = num_string.find('.')
     if decimal_index != -1 and decimal_index + 1 != len(num_string):
         if num_string[decimal_index + 1:].find('.') != -1:
