@@ -82,6 +82,9 @@ class TestCase(unittest.TestCase):
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
+    # -------------------------------------------------------------------------
+    # Tests for Hex Conversion to Base 10 Integer
+    # -------------------------------------------------------------------------
     # Tests type for Hex
     def test_conv_num_hex_type(self):
         test_case = '-0xf52C'
@@ -89,9 +92,6 @@ class TestCase(unittest.TestCase):
         self.assertEqual(type(task.conv_num(test_case)), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
-    # -------------------------------------------------------------------------
-    # Tests for Hex Conversion to Base 10 Integer
-    # -------------------------------------------------------------------------
     # Tests hex conversion to base 10 0x0
     def test_conv_num_hex_0(self):
         test_case = '0x0'
