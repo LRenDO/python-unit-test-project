@@ -82,16 +82,16 @@ class TestCase(unittest.TestCase):
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
-    # Tests type for float
+    # -------------------------------------------------------------------------
+    # Tests for Hex Conversion to Base 10 Integer
+    # -------------------------------------------------------------------------
+    # Tests type for Hex
     def test_conv_num_hex_type(self):
         test_case = '-0xf52C'
         expected = type(-2772)
         self.assertEqual(type(task.conv_num(test_case)), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
-    # -------------------------------------------------------------------------
-    # Tests for Hex Conversion to Base 10 Integer
-    # -------------------------------------------------------------------------
     # Tests hex conversion to base 10 0x0
     def test_conv_num_hex_0(self):
         test_case = '0x0'
@@ -130,9 +130,16 @@ class TestCase(unittest.TestCase):
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
 
-    # Tests more than one decimal point
+    # Tests more than one decimal point on ends
     def test_conv_num_decimal(self):
         test_case = '.234.'
+        expected = None
+        self.assertEqual(task.conv_num(test_case), expected,
+                         msg='conv_num({}) Failed'.format(expected))
+
+    # Tests more than one decimal point in center
+    def test_conv_num_decimal_center(self):
+        test_case = '.23.4.'
         expected = None
         self.assertEqual(task.conv_num(test_case), expected,
                          msg='conv_num({}) Failed'.format(expected))
