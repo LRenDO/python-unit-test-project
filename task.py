@@ -168,6 +168,13 @@ def conv_hex(num_string):
 # -----------------------------------------------------------------------------
 # Function 2
 # -----------------------------------------------------------------------------
+def my_datetime(num_sec):
+    """Converts the given integer of seconds since the Unix epoch and returns
+    it as a date string in the format "MM-DD-YYYY".
+    """
+    month, day, year = 1, 1, 1970
+    return f'{month:02}-{day:02}-{year}'
+
 
 # -----------------------------------------------------------------------------
 # Function 3
