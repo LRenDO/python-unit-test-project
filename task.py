@@ -175,7 +175,7 @@ def my_datetime(num_sec):
     month, day, year = 1, 1, 1970
 
     # Reduce time to number of remaining days (60 * 60 * 24)
-    remaining_days = num_sec / 86400
+    remaining_days = num_sec // 86400
 
     while remaining_days >= 365:
         if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):
