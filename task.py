@@ -182,10 +182,7 @@ def my_datetime(num_sec):
     remaining_days = num_sec // 86400
 
     while remaining_days >= 365:
-        if is_leap_year(year):
-            remaining_days -= 366
-        else:
-            remaining_days -= 365
+        remaining_days -= 366 if is_leap_year(year) else 365
         year += 1
 
     # Map months to their days by index
