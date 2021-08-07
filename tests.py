@@ -217,6 +217,21 @@ class TestCase(unittest.TestCase):
     def test_my_datetime_not_leap_year_when_divisible_by_100(self):
         self.assertEqual(task.my_datetime(4102444800), '01-01-2100')
 
+    def test_my_datetime_february_leap_year(self):
+        self.assertEqual(task.my_datetime(1078012800), '02-29-2004')
+
+    def test_my_datetime_february_not_leap_year(self):
+        self.assertEqual(task.my_datetime(1109548800), '02-28-2005')
+
+    def test_my_datetime_example2(self):
+        self.assertEqual(task.my_datetime(123456789), '11-29-1973')
+
+    def test_my_datetime_example3(self):
+        self.assertEqual(task.my_datetime(9876543210), '12-22-2282')
+
+    def test_my_datetime_example4(self):
+        self.assertEqual(task.my_datetime(201653971200), '02-29-8360')
+
     # -------------------------------------------------------------------------
     # Function 3 Tests
     # -------------------------------------------------------------------------
