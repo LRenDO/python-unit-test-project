@@ -173,6 +173,17 @@ def my_datetime(num_sec):
     it as a date string in the format "MM-DD-YYYY".
     """
     month, day, year = 1, 1, 1970
+
+    # Reduce time to number of remaining days (60 * 60 * 24)
+    remaining_days = num_sec / 86400
+
+    while remaining_days >= 365:
+        if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):
+            remaining_days -= 366
+        else:
+            remaining_days -= 365
+        year += 1
+
     return f'{month:02}-{day:02}-{year}'
 
 

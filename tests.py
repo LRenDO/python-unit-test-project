@@ -202,9 +202,20 @@ class TestCase(unittest.TestCase):
 
     # -------------------------------------------------------------------------
     # Function 2 Tests
+    #
+    # Test cases were created using https://www.epochconverter.com/.
     # -------------------------------------------------------------------------
     def test_my_datetime_initial(self):
         self.assertEqual(task.my_datetime(0), '01-01-1970')
+
+    def test_my_datetime_leap_year_when_divisible_by_4(self):
+        self.assertEqual(task.my_datetime(126230400), '01-01-1974')
+
+    def test_my_datetime_leap_year_when_divisible_by_400(self):
+        self.assertEqual(task.my_datetime(946684800), '01-01-2000')
+
+    def test_my_datetime_not_leap_year_when_divisible_by_100(self):
+        self.assertEqual(task.my_datetime(4102444800), '01-01-2100')
 
     # -------------------------------------------------------------------------
     # Function 3 Tests
