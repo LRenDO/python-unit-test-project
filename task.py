@@ -180,26 +180,11 @@ def reverse_endianness(hex_str):
     :return: a string of hexadecimal bytes separated by spaces of the opposite
         endianness
     """
-    i = 0
-    j = 1
-    m = len(hex_str) - 2
-    n = len(hex_str) - 1
-    new_str = list(hex_str)
-
-    while(i <= m):
-        new_str[i] = hex_str[m]
-        new_str[j] = hex_str[n]
-        new_str[m] = hex_str[i]
-        new_str[n] = hex_str[j]
-        i += 3
-        j += 3
-        m -= 3
-        n -= 3
-
-    new_str = ''.join(new_str)
+    new_str = hex_str.split()
+    new_str.reverse()
+    new_str = ' '.join(new_str)
 
     return new_str
-
 
 def conv_endian(num, endian='big'):
     """This function converts a decimal integer to a string of hexadecimal
