@@ -256,6 +256,12 @@ class TestCase(unittest.TestCase):
     def test_my_datetime_december_days(self):
         self.assertEqual(task.my_datetime(1135987200), '12-31-2005')
 
+    def test_my_datetime_last_second_of_day(self):
+        self.assertEqual(task.my_datetime(86399), '01-01-1970')
+
+    def test_my_datetime_first_second_of_next_day(self):
+        self.assertEqual(task.my_datetime(86400), '01-02-1970')
+
     def test_my_datetime_example2(self):
         self.assertEqual(task.my_datetime(123456789), '11-29-1973')
 
