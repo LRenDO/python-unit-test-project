@@ -212,11 +212,10 @@ def reverse_endianness(hex_str):
     :return: a string of hexadecimal bytes separated by spaces of the opposite
         endianness
     """
-    new_str = hex_str.split()
-    new_str.reverse()
-    new_str = ' '.join(new_str)
+    hex_byte_list = hex_str.split()
+    hex_byte_list.reverse()
 
-    return new_str
+    return ' '.join(hex_byte_list)
 
 
 def conv_endian(num, endian='big'):
