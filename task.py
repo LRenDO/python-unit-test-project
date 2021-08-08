@@ -218,6 +218,7 @@ def reverse_endianness(hex_str):
 
     return new_str
 
+
 def conv_endian(num, endian='big'):
     """This function converts a decimal integer to a string of hexadecimal
     bytes
