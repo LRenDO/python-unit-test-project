@@ -217,11 +217,44 @@ class TestCase(unittest.TestCase):
     def test_my_datetime_not_leap_year_when_divisible_by_100(self):
         self.assertEqual(task.my_datetime(4102444800), '01-01-2100')
 
-    def test_my_datetime_february_leap_year(self):
+    def test_my_datetime_january_days(self):
+        self.assertEqual(task.my_datetime(1107129600), '01-31-2005')
+
+    def test_my_datetime_february_days_leap_year(self):
         self.assertEqual(task.my_datetime(1078012800), '02-29-2004')
 
-    def test_my_datetime_february_not_leap_year(self):
+    def test_my_datetime_february_days_not_leap_year(self):
         self.assertEqual(task.my_datetime(1109548800), '02-28-2005')
+
+    def test_my_datetime_march_days(self):
+        self.assertEqual(task.my_datetime(1112227200), '03-31-2005')
+
+    def test_my_datetime_april_days(self):
+        self.assertEqual(task.my_datetime(1114819200), '04-30-2005')
+
+    def test_my_datetime_may_days(self):
+        self.assertEqual(task.my_datetime(1117497600), '05-31-2005')
+
+    def test_my_datetime_june_days(self):
+        self.assertEqual(task.my_datetime(1120089600), '06-30-2005')
+
+    def test_my_datetime_july_days(self):
+        self.assertEqual(task.my_datetime(1122768000), '07-31-2005')
+
+    def test_my_datetime_august_days(self):
+        self.assertEqual(task.my_datetime(1125446400), '08-31-2005')
+
+    def test_my_datetime_september_days(self):
+        self.assertEqual(task.my_datetime(1128038400), '09-30-2005')
+
+    def test_my_datetime_october_days(self):
+        self.assertEqual(task.my_datetime(1130716800), '10-31-2005')
+
+    def test_my_datetime_november_days(self):
+        self.assertEqual(task.my_datetime(1133308800), '11-30-2005')
+
+    def test_my_datetime_december_days(self):
+        self.assertEqual(task.my_datetime(1135987200), '12-31-2005')
 
     def test_my_datetime_example2(self):
         self.assertEqual(task.my_datetime(123456789), '11-29-1973')
