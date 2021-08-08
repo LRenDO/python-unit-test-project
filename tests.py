@@ -202,7 +202,68 @@ class TestCase(unittest.TestCase):
 
     # -------------------------------------------------------------------------
     # Function 2 Tests
+    #
+    # Test cases were created using https://www.epochconverter.com/.
     # -------------------------------------------------------------------------
+    def test_my_datetime_initial(self):
+        self.assertEqual(task.my_datetime(0), '01-01-1970')
+
+    def test_my_datetime_leap_year_when_divisible_by_4(self):
+        self.assertEqual(task.my_datetime(126230400), '01-01-1974')
+
+    def test_my_datetime_leap_year_when_divisible_by_400(self):
+        self.assertEqual(task.my_datetime(946684800), '01-01-2000')
+
+    def test_my_datetime_not_leap_year_when_divisible_by_100(self):
+        self.assertEqual(task.my_datetime(4102444800), '01-01-2100')
+
+    def test_my_datetime_january_days(self):
+        self.assertEqual(task.my_datetime(1107129600), '01-31-2005')
+
+    def test_my_datetime_february_days_leap_year(self):
+        self.assertEqual(task.my_datetime(1078012800), '02-29-2004')
+
+    def test_my_datetime_february_days_not_leap_year(self):
+        self.assertEqual(task.my_datetime(1109548800), '02-28-2005')
+
+    def test_my_datetime_march_days(self):
+        self.assertEqual(task.my_datetime(1112227200), '03-31-2005')
+
+    def test_my_datetime_april_days(self):
+        self.assertEqual(task.my_datetime(1114819200), '04-30-2005')
+
+    def test_my_datetime_may_days(self):
+        self.assertEqual(task.my_datetime(1117497600), '05-31-2005')
+
+    def test_my_datetime_june_days(self):
+        self.assertEqual(task.my_datetime(1120089600), '06-30-2005')
+
+    def test_my_datetime_july_days(self):
+        self.assertEqual(task.my_datetime(1122768000), '07-31-2005')
+
+    def test_my_datetime_august_days(self):
+        self.assertEqual(task.my_datetime(1125446400), '08-31-2005')
+
+    def test_my_datetime_september_days(self):
+        self.assertEqual(task.my_datetime(1128038400), '09-30-2005')
+
+    def test_my_datetime_october_days(self):
+        self.assertEqual(task.my_datetime(1130716800), '10-31-2005')
+
+    def test_my_datetime_november_days(self):
+        self.assertEqual(task.my_datetime(1133308800), '11-30-2005')
+
+    def test_my_datetime_december_days(self):
+        self.assertEqual(task.my_datetime(1135987200), '12-31-2005')
+
+    def test_my_datetime_example2(self):
+        self.assertEqual(task.my_datetime(123456789), '11-29-1973')
+
+    def test_my_datetime_example3(self):
+        self.assertEqual(task.my_datetime(9876543210), '12-22-2282')
+
+    def test_my_datetime_example4(self):
+        self.assertEqual(task.my_datetime(201653971200), '02-29-8360')
 
     # -------------------------------------------------------------------------
     # Function 3 Tests
