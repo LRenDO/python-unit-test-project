@@ -168,6 +168,38 @@ def conv_hex(num_string):
 # -----------------------------------------------------------------------------
 # Function 2
 # -----------------------------------------------------------------------------
+def is_leap_year(year):
+    """Returns whether or not the given year is a leap year."""
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+
+def my_datetime(num_sec):
+    """Converts the given integer of seconds since the Unix epoch and returns
+    it as a date string in the format "MM-DD-YYYY".
+    """
+    month, day, year = 1, 1, 1970
+
+    # Reduce time to number of remaining days (60 * 60 * 24)
+    remaining_days = num_sec // 86400
+
+    while remaining_days >= 365:
+        remaining_days -= 366 if is_leap_year(year) else 365
+        year += 1
+
+    # Map months to their days by index
+    month_days = [None, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    if is_leap_year(year):
+        month_days[2] = 29
+
+    while remaining_days >= month_days[month]:
+        remaining_days -= month_days[month]
+        month += 1
+
+    day += remaining_days
+
+    return f'{month:02}-{day:02}-{year}'
+
 
 # -----------------------------------------------------------------------------
 # Function 3
